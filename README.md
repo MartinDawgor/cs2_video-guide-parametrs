@@ -17,7 +17,7 @@ The range of accepted values ​​is indicated in parentheses. Some require a r
 The order and placement of commands does not affect the operation of the configuration file.  
 Extra lines with comments or empty values ​​can break the configuration file.  
 It is important to preserve tabs: from the beginning of the line to the first quotation mark of the parameter name,  
-there is one tab (  ), and between the parameter and the value, there are two tabs (    ).  
+there is one tab, and between the parameter and the value, there are two tabs.  
 A sample file with the correct structure is at the very bottom.
 
 - To prevent CS2 from overwriting files, you need to check the "Read-only mode" box in the file's properties. Otherwise, the game may overwrite them.  
