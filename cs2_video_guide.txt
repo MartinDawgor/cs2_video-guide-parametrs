@@ -1,0 +1,374 @@
+1) "AutoConfig" (0 - 2)
+- Determines the automatic graphics configuration mode.
+If set to 1 or 2, the game can reset the settings to those it considers optimal for your hardware the next time it launches.
+0 means that custom settings are used.
+
+2) "Version" (Depends on build)
+- The version of the configuration file structure.
+A service parameter that tells the engine how to read this file.
+Changing it should not be done, as this may reset the settings.
+
+3) "VendorID" (Unique)
+- Unique identifier of the graphics card manufacturer (PCI Vendor ID).
+Used by the game to determine the GPU manufacturer.
+
+4) "DeviceID" (Unique)
+- Unique identifier of the graphics card model (PCI Device ID).
+Allows the game to determine the specific graphics card model for applying presets.
+
+5) "setting.cpu_level" (0 - 3)
+Processor performance level. Automatically determined by the engine.
+Affects the initial setup of CPU-dependent settings (e.g., cloth physics or particle detail).
+0 - Low, 3 - High.
+
+6) "setting.mem_level" (0 - 3)
+- System memory (RAM) level. This parameter helps the game determine the available RAM budget.
+At low values, the game will more aggressively unload unused resources.
+0 - Low, 3 - High.
+
+7) "setting.gpu_level" (0 - 3)
+- Video card performance level. The game engine estimates the power of the graphics chip.
+Affects the automatic selection of a graphics preset (Low/Medium/High) upon first launch or reset.
+0 - Low, 3 - High.
+
+8) "setting.gpu_mem_level" (0 - 3)
+Video memory level (VRAM). Determines the amount of available video memory.
+Affects texture quality and how many textures can be loaded into memory simultaneously without freezing.
+0 is low, 3 is high.
+
+9) "setting.defaultres" (Manual)
+- Horizontal screen resolution (width).
+Determines the number of horizontal pixels, for example, 1920, 1280, 1440.
+Affects image clarity and the load on the graphics card. A lower value increases FPS.
+
+10) "setting.defaultresheight" (Manual)
+- Vertical screen resolution (height).
+Determines the number of vertical pixels, for example, 1080, 960.
+Same effect as defaultres.
+
+11) "setting.refreshrate_numerator" (Manual selection)
+- Screen refresh rate numerator (number of Hertz).
+Used to accurately calculate the refresh rate. Rate = Numerator / Denominator.
+If the value is 0, the game typically uses the default Windows desktop refresh rate.
+
+12) "setting.refreshrate_denominator" (Manual selection)
+- Screen refresh rate denominator.
+The second part of the Hz calculation formula. Typically a constant, equal to 1 or 1000.
+
+13) "setting.monitor_index" (0 - N)
+- The index of the monitor on which the game will run. 0 (primary), 1 (secondary), etc.
+Determines the physical display for image output. Relevant for systems with multiple monitors.
+
+14) "setting.aspectratiomode" (0 - 2)
+- The screen aspect ratio mode. Affects the FOV and model aspect ratio.
+0 — 4:3 (normal), 1 — 16:9 (widescreen), 2 — 16:10.
+
+15) "setting.fullscreen" (0 - 1)
+- Game window display mode. 1 = Exclusive Fullscreen, 0 = Windowed.
+Switches between window modes. Fullscreen mode typically provides the lowest input lag.
+
+16) "setting.fullscreen_min_on_focus_loss" (0 - 1)
+Minimize on focus loss. Determines the game's behavior when you switch to another window with Alt+Tab.
+1 — the game minimizes to the taskbar, 0 — the game remains on the screen or in the background.
+
+17) "setting.coop_fullscreen" (0 - 1)
+Fullscreen window mode with stretching. Toggles the game's full-screen windowed mode.
+Unlike regular windowed mode, it forcibly stretches the image to fill the entire screen.
+
+18) "setting.nowindowborder" (0 - 1)
+Disables window borders. Used in conjunction with windowed mode.
+1 — Removes the system borders and window title, creating a "borderless" mode effect.
+
+19) "setting.high_dpi" (0 - 1)
+- High DPI support. Configure interface scaling for monitors with high pixel density.
+1 — Enables correct scaling, 0 — disables; recommended for games to avoid mouse issues.
+
+20) "setting.knowndevice" (0 - 1)
+- Known device flag. Service parameter.
+1 means the video card was successfully recognized by the game and the initial configuration is complete.
+
+21) "setting.msaa_samples" (0, 2, 4, 8)
+- Multisample anti-aliasing mode (MSAA). Removes jaggies on geometry edges.
+0 — maximum performance disabled, but pixel edges enabled; 4 or 8 — maximum quality. Significantly impacts FPS.
+
+22) "setting.mat_vsync" (0 - 1)
+- Vertical sync. Synchronizes the game's frame rate with the monitor's refresh rate, eliminating image tearing.
+In CS2, a value of 0 is recommended, as enabling 1 adds noticeable input lag.
+
+23) "setting.r_csgo_cmaa_enable" (0 - 1)
+- CMAA2 (Conservative Morphological Anti-Aliasing). An alternative post-processing method for smoothing edges.
+Less resource-intensive than MSAA, but produces a softer, blurrier image. Typically used when MSAA is disabled.
+
+24) "setting.r_low_latency" (0 - 2)
+- NVIDIA Reflex / AMD Anti-Lag low latency mode. Reduces system latency between mouse actions and on-screen display.
+0 - disabled, 1 - enabled, 2 - enabled with acceleration (NVIDIA only).
+
+25) "setting.r_texturefilteringquality" (0 - 5)
+- Texture filtering quality (Anisotropic filtering). Determines the clarity of textures that recede into the distance at an angle.
+0 - bilinear, 5 - anisotropic 16x. Has almost no impact on FPS on modern graphics cards, but adds latency.
+
+26) "setting.shaderquality" (0 - 1)
+- Shader detail. Controls the complexity of surface lighting and special effects.
+0 (Low) — makes the image flatter, improving visibility and FPS. 1 (High) — adds complex highlights and reflections.
+
+27) "setting.videocfg_ao_detail" (0 - 3)
+- Ambient Lighting Shading. Adds soft contact shadows in the corners and at the edges of objects, giving the image volume.
+Significantly reduces performance. For competitive play, this is often set to 0.
+
+28) "setting.videocfg_dynamic_shadows" (0 - 1)
+- General dynamic shadow rendering (Sun and light).
+1 — Enables shadows from moving player objects. 0 — Disables dynamic shadows.
+
+29) "setting.videocfg_fsr_detail" (0 - 5)
+- AMD FidelityFX Super Resolution (FSR). Renders the game at a reduced resolution and upscales it to full resolution, increasing FPS.
+0 — disabled (native resolution, better visibility), 1-4 render compression modes.
+
+30) "setting.videocfg_hdr_detail" (-1 to 3)
+- HDR (High Dynamic Range) quality. Controls the quality of lighting and color reproduction.
+3 — (Performance mode), -1 — (Quality mode), or 0-2 — (Can only be applied via a graphics file; has its own unique effect).
+
+31) "setting.videocfg_particle_detail" (0 - 2)
+- Particle detail. Affects the rendering quality of smoke, explosions, fire, and bullet holes.
+0 - low, 2 - high. A high value can improve visibility through fire (Molotov cocktails), making it more transparent, but reduces FPS.
+
+32) "setting.videocfg_shadow_quality" (0 - 3)
+- Overall shadow quality. Determines the resolution and draw distance of shadows.
+0 - low (shadows only under players), 3 - very high (detailed shadows). High values ​​provide a tactical advantage at the expense of FPS.
+
+33) "setting.videocfg_texture_detail" (0 - 2)
+- Texture detail. Determines the texture resolution of models and the environment.
+0 - low, 2 - high. The impact on FPS is minimal if the graphics card has sufficient video memory (VRAM).
+
+34) "setting.CentroidHack" (0 - 1)
+- Centroid sampling fix. A technical parameter for correcting specific graphical artifacts.
+On certain graphics cards when using MSAA. Usually does not require manual adjustment. 0 - off, 1 - on.
+
+35) "setting.cl_globallight_shadow_mode" (0 - 3)
+- Global illumination shadow mode. Controls the rendering technology for shadows from the primary light source (the sun).
+Works in conjunction with the overall shadow quality, determining how shadows are projected onto static objects.
+0 - low profile, 3 - high profile.
+
+36) "setting.csgo_ambient_cloth" (0 - 1)
+- Cloth physics. Enables or disables the physics simulation of hanging fabrics (tarpaulins, carpets) when interacting with them.
+0 — disabled (saves CPU resources), 1 — enabled.
+
+37) "setting.csgo_ambient_creatures" (0 - 1)
+- Ambient Creatures. Controls the appearance of small creatures on maps (birds, flies).
+0 — disabled (removes visual noise), 1 — enabled.
+
+38) "setting.csgo_cheap_water" (0 - 1)
+- Simplified water rendering. 0 — high-quality water with reflections, 1 — "cheap" water.
+
+39) "setting.csgo_portrait_animate" (0 - 1)
+Portrait animation. Determines whether the character model in the main menu and inventory will be animated. 0 — static model, 1 — animated.
+
+40) "setting.csm_quality_level" (0 - 3)
+Cascaded Shadow Map (CSM) quality. A fine-tuning setting for sun shadows.
+Determines the resolution of cascaded shadow maps. 0 — low resolution, 3 — high.
+
+41) "setting.DisableShaderOptimizations" (0 - 1)
+- Disable shader optimizations. Service parameter.
+0 — optimizations enabled, 1 — disabled.
+
+42) "setting.HasBrokenPipelineStats" (0 - 1)
+- Pipeline statistics error flag. A hardware flag that the engine sets automatically for certain video cards
+if it detects problems with the driver or GPU statistics collection. Manual modification is not recommended. 0 — off, 1 — on.
+
+43) "setting.lb_csm_override_staticgeo_cascades" (0 - 1)
+- Override shadow cascades for static geometry. Advanced shadow rendering settings.
+Allows you to override how shadows are rendered on static geometry in the first cascade (at close range).
+0 — off, 1 — on.
+
+44) "setting.lb_csm_override_staticgeo_cascades_value" (Numeric)
+- Cascade override value. This parameter works in conjunction with the previous one.
+Sets a specific technical value for offsetting or adjusting shadow cascades if overrides are enabled.
+
+45) "setting.lb_enable_shadow_casting" (0 - 1)
+- Shadow Casting. An important hidden parameter.
+Forces shadow generation by objects. Often used in configs to ensure enemy shadows are visible even with low overall shadow quality.
+0 - off, 1 - on.
+
+46) "setting.mat_antialias" (0 - 8)
+- Antialias level (Legacy). A legacy Source engine parameter that works in parallel with msaa_samples. Determines the edge smoothing multiplier (0, 1, 2, 4, 8).
+
+47) "setting.mat_forceaniso" (0 - 16)
+- Forces anisotropic filtering (Legacy). Deprecated parameter, duplicating the functionality of r_texturefilteringquality.
+Forces the texture filtering level (2, 4, 8, 16) to sharpen surfaces at angles.
+
+48) "setting.mat_grain_scale_override" (0 - 1)
+- Film grain effect scale. Controls how much visual noise (Film Grain) is applied to the image.
+In competitive mode, this should typically be 0 for a clean image.
+
+49) "setting.mat_motion_blur_enabled" (0 - 1)
+- Motion blur. Blur effect during sharp camera movements.
+0 — disabled (recommended for maintaining sharpness), 1 — enabled (creates a cinematic effect, interferes with focusing).
+
+50) "setting.mat_queue_mode" (-1 - 2)
+- Render queue mode (Multithreaded). Determines the processor and graphics card operating mode.
+Functionality in Source 2 has not been confirmed, at least in CS2, but the engine detects it.
+-1 — automatic system selection, 2 — forced multithreaded mode (Multithreaded).
+
+51) "setting.mat_software_aa_strength" (0 - 1)
+- Software anti-aliasing strength. Controls the intensity of older anti-aliasing methods performed by the CPU/software.
+In modern configurations, this is usually 0, as hardware methods (MSAA) are more efficient.
+
+52) "setting.mat_triplebuffered" (0 - 1)
+- Triple buffering. Used when vertical synchronization (V-Sync) is enabled.
+1 — Enables a third frame buffer, which makes the image smoother during FPS fluctuations. 0 is strongly recommended for CS2.
+
+53) "setting.PreferHardwareSync" (0 - 1)
+Hardware sync preference. Tells the engine to use the video card's hardware timers for frame synchronization instead of software timers.
+May improve frame rate smoothness on some systems under specific conditions.
+
+54) "setting.PreferTexturesInHWMemory" (0 - 1)
+Storing textures in video memory. 1 — forces the game to store textures in the fast memory of the video card (VRAM) rather than in RAM.
+This reduces loading lag if there is sufficient video memory.
+
+55) "setting.PreferZPrepass" (0 - 1)
+- Z-Prepass (Depth Prepass). Rendering optimization. 1 — the video card first calculates geometry (depth),
+and then applies pixel shaders only to visible objects. Helps save resources with complex geometry.
+
+56) "setting.r_csgo_allow_parallax_mapping" (0 - 1)
+- Parallax Mapping. A technology that adds visual volume and relief to flat textures. 0 — disabled, 1 — enabled.
+
+57) "setting.r_csgo_allow_wind_on_trees" (0 - 1)
+- Wind in the trees. Controls the animation of branches and foliage swaying.
+0 — trees are static (less distracting, higher FPS), 1 — trees sway in the wind.
+
+58) "setting.r_csgo_bloom_compute_shader" (0 - 1)
+- Bloom calculation via Compute Shaders. Optimizes the bloom effect.
+1 — shifts the effect calculation to the graphics card's compute units, 0 — leaves it on the processor.
+
+59) "setting.r_csgo_fxaa" (0 ​​- 1)
+- FXAA (Fast Approximate Anti-Aliasing). A fast post-processing anti-aliasing method.
+1 — enabled. It produces significantly blurrier images compared to MSAA or CMAA2, so it's rarely used in competitive environments.
+
+60) "setting.r_csgo_lowend_objects" (0 - 1)
+Object optimization for low-end PCs.
+1 — Enables simplified versions of some objects. 0 — Standard object quality.
+
+61) "setting.r_csgo_normal_maps" (0 - 1)
+- Normal maps. A technology that simulates relief and unevenness on flat surfaces without increasing the polygon count.
+1 — enabled (more detail), 0 — disabled (flat surfaces).
+
+62) "setting.r_dashboard_render_quality" (0 - 1)
+- Menu rendering quality. Determines the quality of effects and backgrounds in the game's main menu.
+0 — Reduces the load on the graphics card while you're in the lobby.
+
+63) "setting.r_deferred_additive_pass" (0 - 1)
+- Additive lighting pass. Part of Deferred Rendering.
+Responsible for applying additional lighting layers. Disabling this can simplify lighting but improve performance.
+
+64) "setting.r_deferred_height_fog" (0 - 1)
+- Height Fog. Controls the rendering of volumetric fog that accumulates in low-lying areas of maps.
+0 — Disables or simplifies fog, improving visibility at long distances.
+
+65) "setting.r_deferred_simple_light" (0 - 1)
+- Simplified Light. 1 — Enables a simplified lighting calculation model for certain objects.
+This is an optimization that sacrifices the accuracy of physical lighting for FPS.
+
+66) "setting.r_deferred_specular" (0 - 1)
+- Reflections in deferred rendering. Controls the shine and highlights on surfaces (metal, wet floors).
+0 — Makes surfaces more matte, removing unnecessary highlights that can be distracting.
+
+67) "setting.r_deferred_specular_bloom" (0 - 1)
+- Reflection bloom. A glow effect for bright highlights (for example, the sun's reflection in a crosshair).
+0 — Disables the bloom, making the image sharper and cleaner.
+
+68) "setting.r_grass_quality" (0 - 1)
+- Grass quality. Determines the density and detail of the grass on the ground.
+In competitive play, this value is typically set to 0 or lower to prevent grass from obscuring vision.
+
+69) "setting.r_player_visibility_mode" (0 - 1)
+- Boost Player Contrast. An important gameplay parameter.
+1 — Creates a light halo around character models on a dark background, making them more visible.
+
+70) "setting.r_texture_stream_mip_bias" (Numeric)
+Texture MIP-level bias. A technical parameter that controls texture sharpness.
+Negative values ​​sharpen textures (but may cause flickering), while positive values ​​blur them. Typically 0.
+
+71) "setting.SuppressPixelShaderCentroidHackFixup" (0 - 1)
+- Suppresses the centroid hack fix for pixel shaders. A deeply technical parameter related to MSAA antialiasing.
+In some cases, on older drivers, the engine uses a hack to correctly display edges. 0 - off, 1 - on.
+
+72) "setting.Unsupported" (0 - 1)
+- Unsupported parameters. A placeholder string. The engine can write values ​​here that were detected in the config file,
+but are no longer supported by the current version of the game or driver, or are not suitable for the given hardware.
+
+List of commands for copying/editing:
+
+"video.cfg"
+{
+	"Version"		"X"
+	"AutoConfig"		"X"
+	"VendorID"		"X"
+	"DeviceID"		"X"
+	"setting.cpu_level"		"X"
+	"setting.mem_level"		"X"
+	"setting.gpu_level"		"X"
+	"setting.gpu_mem_level"		"X"
+	"setting.defaultres"		"X"
+	"setting.defaultresheight"		"X"
+	"setting.refreshrate_denominator"		"X"
+	"setting.refreshrate_numerator"		"X"
+	"setting.aspectratiomode"		"X"
+	"setting.fullscreen"		"X"
+	"setting.fullscreen_min_on_focus_loss"		"X"
+	"setting.coop_fullscreen"		"X"
+	"setting.nowindowborder"		"X"
+	"setting.monitor_index"		"X"
+	"setting.high_dpi"		"X"
+	"setting.knowndevice"		"X"
+	"setting.msaa_samples"		"X"
+	"setting.mat_vsync"		"X"
+	"setting.r_csgo_cmaa_enable"		"X"
+	"setting.r_low_latency"		"X"
+	"setting.r_texturefilteringquality"		"X"
+	"setting.shaderquality"		"X"
+	"setting.videocfg_ao_detail"		"X"
+	"setting.videocfg_dynamic_shadows"		"X"
+	"setting.videocfg_fsr_detail"		"X"
+	"setting.videocfg_hdr_detail"		"X"
+	"setting.videocfg_particle_detail"		"X"
+	"setting.videocfg_shadow_quality"		"X"
+	"setting.videocfg_texture_detail"		"X"
+	"setting.CentroidHack"		"X"
+	"setting.cl_globallight_shadow_mode"		"X"
+	"setting.csgo_ambient_cloth"		"X"
+	"setting.csgo_ambient_creatures"		"X"
+	"setting.csgo_cheap_water"		"X"
+	"setting.csgo_portrait_animate"		"X"
+	"setting.csm_quality_level"		"X"
+	"setting.DisableShaderOptimizations"		"X"
+	"setting.HasBrokenPipelineStats"		"X"
+	"setting.lb_csm_override_staticgeo_cascades0"		"X"
+	"setting.lb_csm_override_staticgeo_cascades_value0"		"X"
+	"setting.lb_enable_shadow_casting"		"X"
+	"setting.mat_antialias"		"X"
+	"setting.mat_forceaniso"		"X"
+	"setting.mat_grain_scale_override"		"X"
+	"setting.mat_motion_blur_enabled"		"X"
+	"setting.mat_queue_mode"		"X"
+	"setting.mat_software_aa_strength"		"X"
+	"setting.mat_triplebuffered"		"X"
+	"setting.PreferHardwareSync"		"X"
+	"setting.PreferTexturesInHWMemory"		"X"
+	"setting.PreferZPrepass"		"X"
+	"setting.r_csgo_allow_parallax_mapping"		"X"
+	"setting.r_csgo_allow_wind_on_trees"		"X"
+	"setting.r_csgo_bloom_compute_shader"		"X"
+	"setting.r_csgo_fxaa"		"X"
+	"setting.r_csgo_lowend_objects"		"X"
+	"setting.r_csgo_normal_maps"		"X"
+	"setting.r_dashboard_render_quality"		"X"
+	"setting.r_deferred_additive_pass"		"X"
+	"setting.r_deferred_height_fog"		"X"
+	"setting.r_deferred_simple_light"		"X"
+	"setting.r_deferred_specular"		"X"
+	"setting.r_deferred_specular_bloom"		"X"
+	"setting.r_grass_quality"		"X"
+	"setting.r_player_visibility_mode"		"X"
+	"setting.r_texture_stream_mip_bias"		"X"
+	"setting.SuppressPixelShaderCentroidHackFixup"		"X"
+	"setting.Unsupported"		"X"
+}
