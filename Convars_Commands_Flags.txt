@@ -1,0 +1,67 @@
+Description of all bit flags/masks for console commands:
+
+Cheat (FCVAR_CHEAT):
+This command only works if sv_cheats is set to 1 on the server. These commands are blocked in regular matches (MM/Faceit).
+
+Development only (FCVAR_DEVELOPMENTONLY):
+This command exists in the code, but is cut or blocked in the release version of the game. It is only available to Valve developers in their internal builds.
+
+Hidden (FCVAR_HIDDEN):
+This command works, but it is hidden. If you start typing it in the console, auto-completion (hint) will not appear. You must know it by heart.
+
+Not connected (FCVAR_NOT_CONNECTED):
+This command cannot be changed while connected to the server. You must exit to the main menu to change it.
+
+Replicated (FCVAR_REPLICATED):
+This is a server variable. If the server sets a value, your client must set it accordingly. You cannot change it on the client if the server forces its own value.
+
+Notify (FCVAR_NOTIFY):
+If a server admin changes this command, a message about the command change is sent to all players in chat. This is designed to prevent admins from secretly changing the game rules.
+
+User info (FCVAR_USERINFO):
+The value of this variable is sent to the server as "player information."
+
+Defensive (FCVAR_CS_DEFENSIVE):
+This variable participates in the prediction and validation system. If a client attempts to change its value in a data packet, the server will reject the action or mark it as suspicious in its internal database.
+
+Archive (FCVAR_ARCHIVE):
+If a command has this flag, the parameter changed with this flag will be reset upon re-entry. Therefore, we write commands like these in autoexec.cfg to apply commands.
+
+Command line enforced (CLI enforced):
+This command's value is blocked by Steam's launch options. This is essentially a default setting for the client.
+
+Client DLL / Game DLL:
+Shows where exactly the command is forced: in the client code (your PC) or in the game logic code (server/general logic).
+
+Linked concommand:
+This is an action command (e.g., jump or disconnect).
+
+Protected:
+Used for passwords (e.g., rcon_password). The value of this command is not shared with other players and does not appear in the logs.
+
+Singleplayer only:
+Only works if you've created a local server and are playing alone (or with bots).
+
+Demo / Don't record:
+Controls whether changes to this command are recorded in the replay file.
+
+Missing 1 / Missing 2:
+This means that (Source 2 Viewer) found new flags in the game code, but hasn't yet determined what they do, so it's labeled them "Missing." VConsole fuzzy matching: Helps find this command in VConsole by fuzzy searching (missing typos).
+
+VConsole set focus: When the command is invoked, the input focus switches to a specific window.
+
+Menubar item: This command is added as a button to the VConsole top menu.
+
+Client can execute: The server allows the client (you) to execute this command.
+
+Server can execute: The command can be executed by the server console.
+
+Clientcmd can execute: The command can be executed via a scripted call to clientcmd (used in workshop maps/mods).
+
+Server cannot query: The server is not allowed to query your client for the value of this variable.
+
+Execute per tick: The command is executed (called) every tick. This is a very rare flag for deep debugging or hooks.
+
+Initial setvalue: The variable has a hard-coded initial value at engine startup.
+
+Per user: The variable is unique for each local player.
